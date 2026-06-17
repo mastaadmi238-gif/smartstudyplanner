@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Planner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">📚</span>
+      <span class="brand-name">StudyDesk</span>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-btn active" data-tab="planner">Planner</button>
+      <button class="nav-btn" data-tab="tasks">Tasks</button>
+      <button class="nav-btn" data-tab="timer">Focus Timer</button>
+    </nav>
+
+    <div class="streak-box">
+      <span class="streak-label">Study Streak</span>
+      <span class="streak-count" id="streakCount">0 days 🔥</span>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- PLANNER TAB -->
+    <section class="tab active" id="tab-planner">
+      <header class="tab-header">
+        <h1>Weekly Planner</h1>
+        <p class="sub">Plan your subjects for the week.</p>
+      </header>
+
+      <div class="add-session-form card">
+        <h2>Add Study Session</h2>
+        <div class="form-row">
+          <div class="field">
+            <label>Subject</label>
+            <input type="text" id="subjectInput" placeholder="e.g. Mathematics" />
+          </div>
+          <div class="field">
+            <label>Day</label>
+            <select id="daySelect">
+              <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+              <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Time</label>
+            <input type="time" id="timeInput" value="09:00" />
+          </div>
+          <div class="field">
+            <label>Duration (min)</label>
+            <input type="number" id="durationInput" value="60" min="15" max="300" step="15" />
+          </div>
+        </div>
+        <button class="btn-primary" id="addSessionBtn">+ Add Session</button>
+      </div>
+
+      <div class="week-grid" id="weekGrid">
+        <!-- Days populated by JS -->
+      </div>
+    </section>
+
+    <!-- TASKS TAB -->
+    <section class="tab" id="tab-tasks">
+      <header class="tab-header">
+        <h1>Task List</h1>
+        <p class="sub">Break your study goals into steps.</p>
+      </header>
+
+      <div class="card">
+        <div class="task-input-row">
+          <input type="text" id="taskInput" placeholder="Add a task, e.g. Solve 10 algebra problems" />
+          <select id="taskPriority">
+            <option value="high">High</option>
+            <option value="medium" selected>Medium</option>
+            <option value="low">Low</option>
+          </select>
+          <button class="btn-primary" id="addTaskBtn">Add</button>
+        </div>
+      </div>
+
+      <div class="task-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="high">High</button>
+        <button class="filter-btn" data-filter="medium">Medium</button>
+        <button class="filter-btn" data-filter="low">Low</button>
+      </div>
+
+      <ul class="task-list" id="taskList">
+        <!-- Tasks populated by JS -->
+      </ul>
+
+      <div class="task-summary" id="taskSummary"></div>
+    </section>
+
+    <!-- TIMER TAB -->
+    <section class="tab" id="tab-timer">
+      <header class="tab-header">
+        <h1>Focus Timer</h1>
+        <p class="sub">Pomodoro-style deep work sessions.</p>
+      </header>
+
+      <div class="timer-card card">
+        <div class="mode-switcher">
+          <button class="mode-btn active" data-mode="25">Focus — 25 min</button>
+          <button class="mode-btn" data-mode="5">Short Break — 5 min</button>
+          <button class="mode-btn" data-mode="15">Long Break — 15 min</button>
+        </div>
+
+        <div class="timer-face">
+          <svg class="timer-ring" viewBox="0 0 220 220">
+            <circle class="ring-bg" cx="110" cy="110" r="95" />
+            <circle class="ring-progress" id="ringProgress" cx="110" cy="110" r="95" />
+          </svg>
+          <div class="timer-display" id="timerDisplay">25:00</div>
+        </div>
+
+        <div class="timer-label" id="timerLabel">Focus Session</div>
+
+        <div class="timer-controls">
+          <button class="btn-ghost" id="resetBtn">↺ Reset</button>
+          <button class="btn-primary btn-large" id="startBtn">Start</button>
+        </div>
+
+        <div class="sessions-done">
+          Sessions completed today: <strong id="sessionsCount">0</strong>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
