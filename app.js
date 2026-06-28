@@ -217,7 +217,11 @@ function startTimer() {
   }, 1000);
 }
 
-
+function pauseTimer() {
+  clearInterval(timerInterval);
+  isRunning = false;
+  startBtn.textContent = 'Resume';
+}
 
 function resetTimer() {
   clearInterval(timerInterval);
