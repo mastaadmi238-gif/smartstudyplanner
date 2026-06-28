@@ -212,7 +212,7 @@ function startTimer() {
       onTimerEnd();
       return;
     }
-    timeLeft--;
+    timeLeft++;
     updateDisplay();
   }, 1000);
 }
