@@ -223,6 +223,10 @@ function pauseTimer() {
   startBtn.textContent = 'Resume';
 }
 
+function testTimer(){
+  console.log(startTimer());
+}
+
 function resetTimer() {
   clearInterval(timerInterval);
   isRunning = false;
